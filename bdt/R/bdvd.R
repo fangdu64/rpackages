@@ -1,16 +1,42 @@
 #'
-#' run big k-means++ implemented in Big Data Tools (BDT)
+#' run bdvd implemented in Big Data Tools (BDT)
 #'
 #' @param bdt_home installation director for bdt
-#' @param input An input dataset of the format: input-type@@location,
+#' @param data_input an input dataset of the format: input-type@@location,
 #' supported types are:
 #'    text-mat@@path to a text file
 #'    binary-mat@@path to a binary file
+#'    bigmat@@path to a matrix outputed by another bdt cmd
 #'    bams@@path to a file listing bam files
 #'
-#' @param out output dir
-#'
-#' @return fstats A vector of f-statistics
+#' @param data_nrow number of data rows for text-mat, binary-mat
+#' @param data_ncol number of data columns for text-mat, binary-mat
+#' @param data_col_names column names for text-mat, binary-mat
+#' @param data_skip_cols number of first columns to skip for text-mat
+#' @param data_skip_rows number of first rows to skip for text-mat
+#' @param data_col_sep seperator used in text-mat
+#' @param thread_num number of cpu threads to use
+#' @param mem_size how many megabytes of RAM to use
+#' @param sample_groups sample groups
+#' @param pre_normalization prenormalization methods
+#' @param common_column_sum common column sum if method is column-sum
+#' @param ruv_scale default mlog
+#' @param ruv_mlog_c default 1.0
+#' @param ruv_type ruvs or ruvg
+#' @param weak_signal_lb for weak-signal ctrl row method
+#' @param weak_signal_ub for weak-signal ctrl row method
+#' @param lower_quantile_threshold advanced argument
+#' @param all_in_quantile_fraction advanced argument
+#' @param ruv_rowwise_adjust perform row wise adjustment before doing ruv
+#' @param known_factors known factors if available
+#' @param control_rows_method how to define control rows
+#' @param ctrl_rows_input vector to specify which rows are to be used as negative control
+#' @param ctrl_rows_index_base base (e.g., 0, 1) used for control row index 
+#' @param permutation_num number of permutation for calculation null statistics to identify k
+#' @param start_from advanced argument
+#' @param out output folder
+
+#' @return bdvd output
 #'
 #' @export
 #'

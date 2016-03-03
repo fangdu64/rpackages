@@ -1,5 +1,9 @@
 #'
 #' plot explained variance fractions as a function of # of eigen values
+#' @param outPdf pdf file to output
+#' @param eigenVals eigen values
+#' @param permutatedEigenVals permutated eigen values
+#' @param maxK max K
 #' @export
 #'
 plotExplainedFractions <- function(outPdf, eigenVals, permutatedEigenVals, maxK) {

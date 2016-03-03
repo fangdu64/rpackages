@@ -1,5 +1,23 @@
 #'
 #' run bdvd-export
+#' @param bdt_home installation director for bdt
+#' @param thread_num number of cpu threads to use
+#' @param mem_size how many megabytes of RAM to use
+#' @param column_ids which columns (samples) to export
+#' @param bdvd_dir bdvd output folder
+#' @param component can be signal, artifact, random, signal+random
+#' @param unwanted_factors #of unwanted factors to use
+#' @param rowidx_from if export for a row range specify the row range [rowidx_from, rowidx_to) to export 
+#' @param rowidx_to if export for a row range specify the row range [rowidx_from, rowidx_to) to export 
+#' @param export_scale can be mlog or original
+#' @param artifact_detection can be aggressive, conservative
+#' @param known_factors know factors to use
+#' @param export_names a list of names for export result
+#' @param rowidxs_input vector to specify which rows are to be used as negative control
+#' @param rowidxs_index_base base (e.g., 0, 1) used for rowidxs_input
+#' @param start_from advanced argument
+#' @param out output folder
+
 #' @export
 #'
 bdvdExport <- function(bdt_home,

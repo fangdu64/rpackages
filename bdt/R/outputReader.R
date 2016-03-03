@@ -1,5 +1,6 @@
 #'
 #' read output from bigMat
+#' @param outDir output folder for bigMat
 #' @export
 #'
 readBigMatOutput <- function(outDir) {
@@ -18,6 +19,7 @@ readBigMatOutput <- function(outDir) {
 
 #'
 #' read output from bigKmeans
+#' @param outDir output folder for bigKmeans
 #' @export
 #'
 readBigKmeansOutput <- function(outDir) {
@@ -34,6 +36,7 @@ readBigKmeansOutput <- function(outDir) {
 
 #'
 #' read output from bdvd
+#' @param outDir output folder for bdvd
 #' @export
 #'
 readBdvdOutput <- function(outDir) {
@@ -50,6 +53,7 @@ readBdvdOutput <- function(outDir) {
 
 #'
 #' read output from bdvd-export
+#' @param outDir output folder for bdvd-export
 #' @export
 #'
 readBdvdExportOutput <- function(outDir) {

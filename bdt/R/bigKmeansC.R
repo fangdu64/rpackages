@@ -1,11 +1,10 @@
 #'
-#' run big k-means++ implemented in Big Data Tools (BDT)
+#' run bigKmeans on slave machines
 #'
 #' @param bdt_home installation director for bdt
 #' @param thread_num The number of threads used to do clustering
-#' @param dist_type The distance used
-#' @param max_iter max number of iteration of the kmeans
-#' @param min_expchange min change of explained variance
+#' @param master_host machine host where bigKmeans master is running
+#' @param master_port machine port where bigKmeans master is running
 #' @param out output dir
 #'
 #' @return ret a list representing bigKmeans results

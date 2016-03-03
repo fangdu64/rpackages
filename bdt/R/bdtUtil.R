@@ -1,5 +1,7 @@
 #'
 #' read output from bigMat
+#' @param matInfo mat meta info outputed from bdt cmds
+
 #' @export
 #'
 readMat <- function(matInfo) {
@@ -8,7 +10,8 @@ readMat <- function(matInfo) {
 }
 
 #'
-#' read output from bigMat
+#' read output from bigVec
+#' @param vecInfo vector meta info outputed from bdt cmds
 #' @export
 #'
 readVec <- function(vecInfo) {
@@ -17,7 +20,8 @@ readVec <- function(vecInfo) {
 }
 
 #'
-#' read output from bigMat
+#' read output from integer matrix
+#' @param matInfo mat meta info outputed from bdt cmds
 #' @export
 #'
 readIntMat <- function(matInfo) {
@@ -27,7 +31,8 @@ readIntMat <- function(matInfo) {
 }
 
 #'
-#' read output from bigMat
+#' read output from bigVec
+#' @param vecInfo vector meta info outputed from bdt cmds
 #' @export
 #'
 readIntVec <- function(vecInfo) {
@@ -51,6 +56,7 @@ getScriptDir <- function() {
 
 #'
 #' get Genome position by bin idx
+#' @param binMap binMap
 #' @param binIdx 0-based
 #' @export
 #'
@@ -69,6 +75,7 @@ getGenomePosByBinIdx <- function(binMap, binIdx) {
 
 #'
 #' get bin idx by Genome position
+#' @param binMap binMap
 #' @param refName chromosome e.g., chr1
 #' @param bpIdx base-pair position within the chromosome, 0-based
 #' @export
@@ -82,6 +89,13 @@ getBinIdxByGenomePos <- function(binMap, refName, bpIdx) {
     return (binIdx)
 }
 
+#'
+#' readBigMatrix
+#' @param colCnt colCnt
+#' @param rowCnt rowCnt
+#' @param bfvFile bfv file path
+#' @export
+#'
 readBigMatrix<-function(colCnt,rowCnt,bfvFile)
 {
 	totalValueCnt = rowCnt*colCnt
@@ -92,6 +106,14 @@ readBigMatrix<-function(colCnt,rowCnt,bfvFile)
 	return (Y)
 }
 
+#'
+#' readBigMatrixAuto
+#' @param colCnt colCnt
+#' @param rowCnt rowCnt
+#' @param bfvFilePrefix bfv file prefix
+#' @param batchFileSizeMB batchFileSizeMB
+#' @export
+#'
 readBigMatrixAuto<-function(colCnt,rowCnt,bfvFilePrefix, batchFileSizeMB=1024)
 {
 	szValueType=8
@@ -117,6 +139,14 @@ readBigMatrixAuto<-function(colCnt,rowCnt,bfvFilePrefix, batchFileSizeMB=1024)
 
 }
 
+#'
+#' readBigMatrixBatches
+#' @param colCnt colCnt
+#' @param rowCnt rowCnt
+#' @param bfvFilePrefix bfv file prefix
+#' @param batchFileSizeMB batchFileSizeMB
+#' @export
+#'
 readBigMatrixBatches<-function(colCnt,rowCnt,bfvFilePrefix, batchFileSizeMB=1024)
 {
 	szValueType=8
@@ -149,6 +179,13 @@ readBigMatrixBatches<-function(colCnt,rowCnt,bfvFilePrefix, batchFileSizeMB=1024
 	return (Y)
 }
 
+#'
+#' readBigMatrixInt
+#' @param colCnt colCnt
+#' @param rowCnt rowCnt
+#' @param bfvFile bfv file path
+#' @export
+#'
 readBigMatrixInt<-function(colCnt,rowCnt,bfvFile)
 {
 	totalValueCnt = rowCnt*colCnt
@@ -159,6 +196,11 @@ readBigMatrixInt<-function(colCnt,rowCnt,bfvFile)
 	return (Y)
 }
 
+#'
+#' readVectorFromTxt
+#' @param txtFile text file path
+#' @export
+#'
 readVectorFromTxt<-function(txtFile)
 {
 	vec=read.table(txtFile, sep="\t")
@@ -166,6 +208,11 @@ readVectorFromTxt<-function(txtFile)
 	return (vec)
 }
 
+#'
+#' vecList
+#' @param vecList vecList
+#' @export
+#'
 vecListToString<-function(vecList)
 {
     outStr = c()

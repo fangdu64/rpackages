@@ -2,19 +2,30 @@
 #' run big k-means++ implemented in Big Data Tools (BDT)
 #'
 #' @param bdt_home installation director for bdt
-#' @param input An input dataset of the format: input-type@@location,
+#' @param data_input an input dataset of the format: input-type@@location,
 #' supported types are:
 #'    text-mat@@path to a text file
 #'    binary-mat@@path to a binary file
+#'    bigmat@@path to a matrix outputed by another bdt cmd
 #'    bams@@path to a file listing bam files
 #'
-#' @param row_cnt The number of rows of the input matrix (if input types are text-mat or binary-mat)
-#' @param col_cnt The number of columns of the input matrix (if input types are text-mat or binary-mat)
+#' @param data_nrow number of data rows for text-mat, binary-mat
+#' @param data_ncol number of data columns for text-mat, binary-mat
+#' @param data_col_names column names for text-mat, binary-mat
+#' @param data_skip_cols number of first columns to skip for text-mat
+#' @param data_skip_rows number of first rows to skip for text-mat
+#' @param data_col_sep seperator used in text-mat
 #' @param k The number of clusters
 #' @param thread_num The number of threads used to do clustering
 #' @param dist_type The distance used
 #' @param max_iter max number of iteration of the kmeans
 #' @param min_expchange min change of explained variance
+#' @param seeding_method seeding method can be kmeans++, random, provided
+#' @param seeds_input an input dataset as seed matrix
+#' @param seeds_nrow number of data rows for text-mat, binary-mat
+#' @param seeds_ncol number of data columns for text-mat, binary-mat
+#' @param slave_num default 0, for using multiple machines
+#' @param start_from advanced argument
 #' @param out output dir
 #'
 #' @return ret a list representing bigKmeans results
