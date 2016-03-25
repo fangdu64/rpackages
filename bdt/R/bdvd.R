@@ -40,6 +40,11 @@
 #'
 #' @export
 #'
+#' @examples
+#'   ##full example at: https://github.com/fangdu64/BDT/blob/master/examples/analysis/DukeUwExonArray/s01-bdvd/bdvd.R
+#'   ##full example at: https://github.com/fangdu64/BDT/tree/master/examples/analysis/DukeUwDnase/s02-bdvd
+#'    q()
+
 bdvd <- function(bdt_home,
                  data_input,
                  data_nrow = NULL,

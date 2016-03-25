@@ -1,0 +1,48 @@
+<!--
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{The BDT package for analysing very large scale genomic data}
+-->
+
+# Introduction
+Big Data Tools (BDT) is a computational framework for analysing very large scale genomic data. Currently, it offers several unique tools.
+
+## BDVD: Big Data Variance Decomposition for High-throughput Genomic Data
+Variance decomposition (e.g., ANOVA, PCA) is a fundamental tool in statistics to
+understand data structure. High-throughput genomic data have heterogeneous sources of variation. Some are of biological interest, and others are unwanted (e.g., lab and batch effects). Knowing the relative contribution of each source to the total data variance is crucial for making data-driven discoveries. However, when one has massive amounts of high-dimensional data with heterogeneous origins, analysing variances is non-trivial. The dimension, size and heterogeneity of the data all pose significant challenges. Big Data Variance Decomposition (BDVD) is a new tool developed to solve this problem. Built upon the recently developed RUV approach, BDVD decomposes data into biological signals, unwanted systematic variation, and independent random noise. The biological signals can then be further decomposed to study variations among genomic loci or sample types, or correlation between different data types. The algorithm is implemented by incorporating techniques to handle big data and offers several unique features:
+- Implemented with efficient C++ language
+- Fully exploits multi-core/multi-cpu computation power
+- Ability to handle very large scale data  (e.g., a 30,000,000 x 500 data matrix)
+- Ability to directly take a large number of BAM files as input with multi-core parallel processing
+- Provides command line tools
+- Provides R package to run BDVD and for seamless integration
+- Transparency/open-source code
+- Easy installation - one liner command, no root user required
+
+In addition, BDVD naturally outputs normalized biological variations for downstream statistical inferences such as clustering large scale genomic loci with BigClust that is also provided in BDT.
+
+## BigClust: Big Data Clustering Methods
+Cluster analysis is the task of assigning a set of elements into groups (clusters) on the basis of their similarity. BigClust offers several tools to quickly perform clustering for very large scale dataset. 
+
+### BigKmeans
+BigKmeans enhences the widely used K-means with important improvments making it very suitable for big data.
+- Improved the seeding (choosing initial centroids) with kmeans++
+- Ability to evaluate optimal K with no extra computational cost
+- Implemented with efficient C++ language
+- Fully exploits multi-core/multi-cpu computation power
+- Ability to handle very large scale data  (e.g., a 30,000,000 x 500 data matrix)
+- Built-in ability to exploit multi-machine resources with distriubted computing for super large dataset
+- Provides command line tools
+- Provides R package to run BigKmeans and for seamless integration
+- Transparency/open-source code
+- Easy installation - one liner command, no root user required
+
+# Installation
+BDT software should be installed first, please see [README.md](https://github.com/fangdu64/BDT/blob/master/README.md) for instructions.
+
+
+Start R and run:
+
+```{r installme, eval=FALSE}
+source("http://bioconductor.org/biocLite.R")
+biocLite("bdt")
+```

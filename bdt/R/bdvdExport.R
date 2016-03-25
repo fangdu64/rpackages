@@ -20,6 +20,23 @@
 
 #' @export
 #'
+#' @examples
+#'   ##full example at: https://github.com/fangdu64/BDT/blob/master/examples/analysis/DukeUwDnase/s08-Fstats-conservative/bdvd-fstats.R
+#'   ##full example at: https://github.com/fangdu64/BDT/blob/master/examples/analysis/DukeUwExonArray/s02-Fstats-conservative/bdvd-fstats.R
+#'    exportRet = bdvdExport(
+#'        bdt_home = bdtHome,
+#'        thread_num = num_threads,
+#'        mem_size = 16000,
+#'        column_ids = exportSampleIds,
+#'        bdvd_dir = paste0(thisScriptDir, '/../s02-bdvd/out'),
+#'        component = 'signal+random',
+#'        artifact_detection = 'conservative',
+#'        unwanted_factors = unwanted_factors,
+#'        known_factors = known_factors,
+#'        rowidxs_input = paste0("text-rowids@", bdtDatasetsDir, "/DukeUwDnase/100bp/RowIdxs/signalRandom.txt"),
+#'        rowidxs_index_base = 0,
+#'        out = paste0(thisScriptDir,"/out"))
+
 bdvdExport <- function(bdt_home,
                  thread_num = 1,
                  mem_size = 1000,

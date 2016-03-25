@@ -3,6 +3,10 @@
 #' @param outDir output folder for bigMat
 #' @export
 #'
+#' @examples
+#'   ##full example at: https://github.com/fangdu64/BDT/blob/master/examples/analysis/DukeUwDnase/s01-bam2mat/binInfo.R
+#'   output = readBigMatOutput(paste0(thisScriptDir,"/out"))
+
 readBigMatOutput <- function(outDir) {
     env <- new.env()
     fileName = paste0(outDir,"/logs/output.R")
@@ -22,6 +26,9 @@ readBigMatOutput <- function(outDir) {
 #' @param outDir output folder for bigKmeans
 #' @export
 #'
+#' @examples
+#'   output = readBigKmeansOutput(paste0(thisScriptDir,"/out"))
+
 readBigKmeansOutput <- function(outDir) {
     env <- new.env()
     fileName = paste0(outDir,"/logs/output.R")
@@ -39,6 +46,9 @@ readBigKmeansOutput <- function(outDir) {
 #' @param outDir output folder for bdvd
 #' @export
 #'
+#' @examples
+#'   ##full example at: https://github.com/fangdu64/BDT/blob/master/examples/analysis/DukeUwExonArray/s01-bdvd/bdvd.R
+#'   bdvdRet = readBdvdOutput(paste0(thisScriptDir, "/out"))
 readBdvdOutput <- function(outDir) {
     env <- new.env()
     fileName = paste0(outDir,"/logs/output.R")
@@ -56,6 +66,9 @@ readBdvdOutput <- function(outDir) {
 #' @param outDir output folder for bdvd-export
 #' @export
 #'
+#' @examples
+#'   ##full example at: https://github.com/fangdu64/BDT/blob/master/examples/analysis/DukeUwDnase/s08-Fstats-conservative/bdvd-fstats.R
+#'   exportRet = readBdvdExportOutput(paste0(thisScriptDir,"/out"))
 readBdvdExportOutput <- function(outDir) {
     env <- new.env()
     fileName = paste0(outDir,"/logs/output.R")

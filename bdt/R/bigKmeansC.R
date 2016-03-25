@@ -11,6 +11,15 @@
 #'
 #' @export
 #'
+#' @examples
+#'   ##full example at: https://github.com/fangdu64/BDT/tree/master/examples/R/bigKMeans
+#'   bigKmeansC(
+#'       bdt_home = bdtHome,
+#'       thread_num = 2,
+#'       master_host = 'localhost',
+#'       master_port = 50662,
+#'       out = paste0(thisScriptDir,"/02-slave-out"))
+
 bigKmeansC <- function(bdt_home,
                       thread_num,
                       master_host,
@@ -31,6 +40,6 @@ bigKmeansC <- function(bdt_home,
         command = cmds[2]
         args = cmds[-c(1,2)]
     }
-	
+
     system2(command, args)
 }

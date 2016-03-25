@@ -1,38 +1,59 @@
 #'
-#' plot explained variance fractions as a function of # of eigen values
+#' plot explained variance fractions as a function of # of unwanted factors
 #' @param outPdf pdf file to output
-#' @param eigenVals eigen values
-#' @param permutatedEigenVals permutated eigen values
-#' @param maxK max K
+#' @param bdvdRet output from bdvd run
+#' @param maxK max K to display
 #' @export
 #'
-plotExplainedFractions <- function(outPdf, eigenVals, permutatedEigenVals, maxK) {
-    pdf(file = outPdf)
+#' @examples
+#'   bdvdRet = readBdvdOutput(paste0(thisScriptDir, "/out"))
+#'   plotBdvdKSelection(outPdf, bdvdRet, 20)
+
+plotBdvdKSelection <- function(outPdf, bdvdRet, maxK) {
+    eigenValues = readVec(bdvdRet$eigenValues)
+    eigenVectors = readMat(bdvdRet$eigenVectors)
+    permutatedEigenValues = readMat(bdvdRet$permutatedEigenValues)
+    Wt = readMat(bdvdRet$Wt)
+
     e = 0.000001
-    eigenVals[which(eigenVals <= e)] = 0
-    L = nrow(eigenVals)
+    eigenValues[which(eigenValues<=e)]=0
+
+    L = nrow(eigenValues)
+
     T = rep(0, L)
+    for(k in 1:L){
+        T[k] = eigenValues[k] / sum(eigenValues)
+    }
+
+    maxK = 20
+    grDevices::pdf(file = paste0(plotOutDir, "/k_evalueation.pdf"))
+    plotdata <- plot(1:L, T, type = "h", xlab = "", col = "gray", lty = 2,
+         ylab = "Proportion", bty = "n", xaxt = 'n', xlim = c(0.8, maxK))
+
+    graphics::lines(1:L, T, type = "o", lwd = 2, lty = 1, col = "deepskyblue", pch = 19)
+    graphics::axis(side = 1, at = 1:L, labels = as.character(1:L))
+
+    ##
+    ## null statistics
+    ##
+
+    B = ncol(permutatedEigenValues)
+    T_0= vector(mode="list", length=L)
     for(k in 1:L) {
-        T[k] = eigenVals[k] / sum(eigenVals)
+        T_0[[k]] = rep(0, B);
     }
-    ks = 1:maxK
-    plot(ks, T[ks], type="h", xlab="K", col="gray", lty=2,
-     ylab="Fraction", bty = "n", xaxt='n', ylim=c(0, max(T)*1.1), xlim=c(0.8, maxK+0.2))
 
-    B = ncol(permutatedEigenVals)
-    T_0 = matrix(0, L, B)
-    for(b in 1:B) {
-        pev = permutatedEigenVals[, b]
-        pev[which(eigenVals <= e)] = 0
+    for(b in 1:B){
+        pev = permutatedEigenValues[,b];
+        pev[which(eigenValues<=e)]=0
         for(k in 1:L) {
-            T_0[k, b] = pev[k] / sum(pev)
+            T_0[[k]][b] = pev[k] / sum(pev)
         }
-    
-        lines(ks, T_0[ks, b], type="o", lwd=1, lty=1, col="pink", pch=19)
     }
 
-    lines(ks, T[ks], type="o", lwd=3, lty=1, col="deepskyblue", pch=19)
-    axis(side=1, at=ks, labels=as.character(ks))
-    abline(h=mean(T_0[1,]), col="pink", lwd=1,lty=3)
-    dev.off()
+    ##
+    ## box plot for null statistics
+    ##
+    plotdata <- graphics::boxplot(T_0, add = TRUE)
+    grDevices::dev.off()
 }

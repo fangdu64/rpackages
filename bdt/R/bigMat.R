@@ -18,6 +18,9 @@
 #'
 #' @export
 #'
+#' @examples
+#'   ##full example at: https://github.com/fangdu64/BDT/tree/master/examples/linux/bigMat
+
 bigMat <- function(bdt_home,
                    input,
                    row_cnt = NULL,

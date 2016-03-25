@@ -1,11 +1,24 @@
 Package: bdt
-Title: R package for calling and retrieving big data analyses performed by Big Data Tools (BDT)
+Title: R package for calling and retrieving big data analyses performed by Big
+    Data Tools (BDT)
 Version: 0.99.0
 Authors@R: c(
     person("Fang", "Du", email = "fangdu64@gmail.com", role = c("aut", "cre")),
-	person("Ben", "Sherwood", email = "bsherwo2@jhu.edu", role = c("aut", "ths")),
+    person("Ben", "Sherwood", email = "bsherwo2@jhu.edu", role = c("aut", "ths")),
     person("Hongkai", "Ji", email = "hji@jhu.edu", role = c("aut", "ths")))
-Description: The bdt R package is to run BDT within R for seamless integration. Under the hood, it simply calls BDT commond line tools and provides a convinient way to retrieve the output results from BDT into R for follow-up analysis.
-Depends: R (>= 3.0.2), latticeExtra
+Description: The bdt R package is to run BDT within R for seamless integration.
+    Under the hood, it simply calls BDT commond line tools and provides a convinient
+    way to retrieve the output results from BDT into R for follow-up analysis.
+VignetteBuilder: knitr
+Depends:
+    R (>= 3.2)
+Imports:
+    grDevices,
+    graphics,
+    utils
+Suggests:
+    knitr
 License: GPL-2
 LazyData: false
+biocViews: Normalization, Preprocessing, BatchEffect, DifferentialExpression, Clustering, Sequencing, RNASeq, DNASeq, ExonArray, Software, StatisticalMethod
+RoxygenNote: 5.0.1

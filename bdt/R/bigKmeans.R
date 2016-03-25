@@ -32,6 +32,18 @@
 #'
 #' @export
 #'
+#' @examples
+#'    ##full example at: https://github.com/fangdu64/BDT/tree/master/examples/R/bigKMeans#'
+#'    ret = bigKmeans(
+#'        bdt_home = bdtHome,
+#'        data_input = paste0("output@", thisScriptDir, '/../s04-export-noRuv/out'),
+#'        k = 100,
+#'        thread_num = 40,
+#'        dist_type = 'Correlation',
+#'        max_iter = 100,
+#'        min_expchange = 0.0001,
+#'        out = paste0(thisScriptDir,"/out"))
+
 bigKmeans <- function(bdt_home,
                       data_input,
                       data_nrow = NULL,
