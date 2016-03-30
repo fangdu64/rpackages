@@ -45,7 +45,7 @@
 #'   ##full example at: https://github.com/fangdu64/BDT/tree/master/examples/analysis/DukeUwDnase/s02-bdvd
 #'    q()
 
-bdvd <- function(bdt_home,
+bdvd <- function(bdt_home = NULL,
                  data_input,
                  data_nrow = NULL,
                  data_ncol = NULL,
@@ -73,9 +73,15 @@ bdvd <- function(bdt_home,
                  permutation_num = 0,
                  start_from = NULL,
                  out) {
+    
+    binPath = 'bdvd'
+    if (!is.null(bdt_home)) {
+        binPath = paste0(bdt_home, '/', binPath)
+    }
+
     cmds = c(
         'py',
-        paste0(bdt_home,"/bdvd"),
+        binPath,
         '--data-input', data_input,
         '--out', out,
         '--thread-num', as.character(thread_num),

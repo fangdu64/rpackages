@@ -20,14 +20,19 @@
 #'       master_port = 50662,
 #'       out = paste0(thisScriptDir,"/02-slave-out"))
 
-bigKmeansC <- function(bdt_home,
+bigKmeansC <- function(bdt_home = NULL,
                       thread_num,
                       master_host,
                       master_port,
                       out) {
+    binPath = 'bigKmeansC'
+    if (!is.null(bdt_home)) {
+        binPath = paste0(bdt_home, '/', binPath)
+    }
+    
     cmds = c(
         'py',
-        paste0(bdt_home,"/bigKmeansC"),
+        binPath,
         '--out', out,
         '--thread-num', as.character(thread_num),
         '--master-host', master_host,

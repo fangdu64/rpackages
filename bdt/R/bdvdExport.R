@@ -37,7 +37,7 @@
 #'        rowidxs_index_base = 0,
 #'        out = paste0(thisScriptDir,"/out"))
 
-bdvdExport <- function(bdt_home,
+bdvdExport <- function(bdt_home = NULL,
                  thread_num = 1,
                  mem_size = 1000,
                  column_ids,
@@ -54,9 +54,14 @@ bdvdExport <- function(bdt_home,
                  rowidxs_index_base = NULL,
                  start_from = NULL,
                  out) {
+    binPath = 'bdvdExport'
+    if (!is.null(bdt_home)) {
+        binPath = paste0(bdt_home, '/', binPath)
+    }
+
     cmds = c(
         'py',
-        paste0(bdt_home,"/bdvdExport"),
+        binPath,
         '--out', out,
         '--thread-num', as.character(thread_num),
         '--memory-size', as.character(mem_size),

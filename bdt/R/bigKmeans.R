@@ -44,7 +44,7 @@
 #'        min_expchange = 0.0001,
 #'        out = paste0(thisScriptDir,"/out"))
 
-bigKmeans <- function(bdt_home,
+bigKmeans <- function(bdt_home = NULL,
                       data_input,
                       data_nrow = NULL,
                       data_ncol = NULL,
@@ -64,9 +64,14 @@ bigKmeans <- function(bdt_home,
                       start_from = NULL,
                       slave_num = NULL,
                       out) {
+    binPath = 'bigKmeans'
+    if (!is.null(bdt_home)) {
+        binPath = paste0(bdt_home, '/', binPath)
+    }
+
     cmds = c(
         'py',
-        paste0(bdt_home,"/bigKmeans"),
+        binPath,
         '--data-input', data_input,
         '--k', as.character(k),
         '--out', out,

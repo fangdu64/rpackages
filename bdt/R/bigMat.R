@@ -21,7 +21,7 @@
 #' @examples
 #'   ##full example at: https://github.com/fangdu64/BDT/tree/master/examples/linux/bigMat
 
-bigMat <- function(bdt_home,
+bigMat <- function(bdt_home = NULL,
                    input,
                    row_cnt = NULL,
                    col_cnt = NULL,
@@ -29,9 +29,14 @@ bigMat <- function(bdt_home,
                    skip_rows = NULL,
                    col_sep = NULL,
                    out) {
+    binPath = 'bigMat'
+    if (!is.null(bdt_home)) {
+        binPath = paste0(bdt_home, '/', binPath)
+    }
+
     cmds = c(
         'py',
-        paste0(bdt_home,"/bigMat"),
+        binPath,
         '--input', input,
         '--out', out)
 
