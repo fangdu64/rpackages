@@ -27,8 +27,8 @@ plotBdvdKSelection <- function(outPdf, bdvdRet, maxK) {
 
     maxK = 20
     grDevices::pdf(file = paste0(plotOutDir, "/k_evalueation.pdf"))
-    plotdata <- plot(1:L, T, type = "h", xlab = "", col = "gray", lty = 2,
-         ylab = "Proportion", xlab = "K", bty = "n", xaxt = 'n', xlim = c(0.8, maxK))
+    plotdata <- plot(1:L, T, type = "h", xlab = "K", col = "gray", lty = 2,
+         ylab = "Proportion", bty = "n", xaxt = 'n', xlim = c(0.8, maxK))
 
     graphics::lines(1:L, T, type = "o", lwd = 2, lty = 1, col = "deepskyblue", pch = 19)
     graphics::axis(side = 1, at = 1:L, labels = as.character(1:L))
