@@ -67,6 +67,8 @@ bigKmeans <- function(bdt_home = NULL,
     binPath = 'bigKmeans'
     if (!is.null(bdt_home)) {
         binPath = paste0(bdt_home, '/', binPath)
+    } else {
+        binPath = paste0(Sys.getenv('BDT_HOME'), '/', binPath)
     }
 
     cmds = c(
