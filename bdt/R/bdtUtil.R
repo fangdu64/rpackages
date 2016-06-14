@@ -265,7 +265,7 @@ readVectorFromTxt<-function(txtFile)
 }
 
 #'
-#' vecList
+#' vecListToString
 #' @param vecList vecList
 #' @export
 #'
@@ -282,3 +282,49 @@ vecListToString<-function(vecList)
     return (paste0(outStr, collapse=","))
 }
 
+
+#'
+#' getConfigOrder
+#' @param ks unwanted factors
+#' @param k known factors
+#' @param k this unwanted factor
+#' @param n this known factor
+#'
+#' @examples
+#'   ks = c(1, 1, 2, 3)
+#'   ns = c(1, 0, 0, 0)
+#'   getConfigOrder(ks, ns, 1, 0)
+
+getConfigOrder <- function(ks, ns, k, n) {
+    oval = unique(ks+ns*1000) #put known factors to rightmost
+    oval = oval[order(oval)]
+    v = k + n*1000
+    for( i in 1:length(oval)) {
+        if(v==oval[i])
+            return (i)
+    }
+    return (0)
+}
+
+#'
+#' getConfigTexts
+#' @param ks unwanted factors
+#' @param k known factors
+#'
+#' @examples
+#'   ks = c(1, 1, 2, 3)
+#'   ns = c(1, 0, 0, 0)
+#'   getConfigTexts(ks, ns)
+getConfigTexts <- function(ks, ns) {
+    oval=unique(ks+ns*1000) #put known factors to rightmost
+    oval=oval[order(oval)]
+    txts=rep("", length(oval))
+    for( i in 1:length(oval)) {
+        if(oval[i] >= 1000) {
+            txts[i]="KF"
+        } else {
+            txts[i] = as.character(oval[i]%%1000)
+        }
+    }
+    return (txts)
+}

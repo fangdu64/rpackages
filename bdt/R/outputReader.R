@@ -77,3 +77,18 @@ readBdvdExportOutput <- function(outDir) {
 
     return (ret)
 }
+
+#'
+#' read output from bdvdVd
+#' @param outDir output folder for bdvdVd
+#' @export
+#'
+#' @examples
+#'   ##full example at: https://github.com/fangdu64/BDT/blob/master/examples/analysis/DukeUwDnase/s08-Fstats-conservative/bdvd-fstats.R
+#'   exportRet = readBdvdExportOutput(paste0(thisScriptDir,"/out"))
+readBdvdVdOutput <- function(outDir) {
+    vd_fn=paste0(outDir,"/vd.txt")
+
+    vdTbl=read.table(vd_fn, stringsAsFactors = FALSE, sep = "\t", header = TRUE)
+    return (vdTbl)
+}

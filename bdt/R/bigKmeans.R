@@ -36,7 +36,7 @@
 #'    ##full example at: https://github.com/fangdu64/BDT/tree/master/examples/R/bigKMeans#'
 #'    ret = bigKmeans(
 #'        bdt_home = bdtHome,
-#'        data_input = paste0("output@", thisScriptDir, '/../s04-export-noRuv/out'),
+#'        data_input = paste0("output@@", thisScriptDir, '/../s04-export-noRuv/out'),
 #'        k = 100,
 #'        thread_num = 40,
 #'        dist_type = 'Correlation',
